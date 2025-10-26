@@ -10,8 +10,8 @@ export type Blog = {
 
 // ブログ記事一覧のレスポンス全体の型定義
 export type BlogListResponse = {
-  contents: Blog;
+  contents: Blog[]; // ✅ 配列にする
   totalCount: number;
-  limit: number;
   offset: number;
+  limit: number;
 };
