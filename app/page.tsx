@@ -1,10 +1,11 @@
 import Link from "next/link";
 import { client } from "../libs/client";
-import type { Blog } from "../types/blog"; // 型をインポート
+// BlogListResponse もインポートする
+import type { Blog, BlogListResponse } from "../types/blog";
 
 export default async function Home() {
-  // client.getに<...>で型を指定。Blog とすることで配列であることを明示する
-  const { contents } = await client.get<{ contents: Blog }>({
+  // client.getに、新しく作成した BlogListResponse 型を指定する
+  const data = await client.get<BlogListResponse>({
     endpoint: "blogs",
   });
 
@@ -12,7 +13,7 @@ export default async function Home() {
     <div>
       <h1>ブログ一覧</h1>
       <ul>
-        {contents.map((blog) => (
+        {data.contents.map((blog) => (
           <li key={blog.id}>
             <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
           </li>
