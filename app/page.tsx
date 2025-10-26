@@ -3,7 +3,7 @@ import { client } from "../libs/client";
 import type { Blog } from "../types/blog"; // 型をインポート
 
 export default async function Home() {
-  // client.getに<...>で型を指定
+  // client.getに<...>で型を指定。Blog とすることで配列であることを明示する
   const { contents } = await client.get<{ contents: Blog }>({
     endpoint: "blogs",
   });
