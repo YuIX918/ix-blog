@@ -1,0 +1,35 @@
+/* styles/BackToTopButton.module.css */
+.button {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--color-text); /* 変数適用 */
+  color: var(--color-background); /* 変数適用 */
+  border: none;
+  cursor: pointer;
+  z-index: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+/* ★ 削除: 空のルールセット */
+/* .button img { */
+/* filter: invert(1); */
+/* } */
+
+.button.visible {
+  opacity: 0.8;
+  visibility: visible;
+}
+
+.button:hover {
+  opacity: 1;
+}

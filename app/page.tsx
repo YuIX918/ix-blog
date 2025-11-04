@@ -1,24 +1,53 @@
-import Link from "next/link";
-import { client } from "../libs/client";
-// BlogListResponse もインポートする
-import type { Blog, BlogListResponse } from "../types/blog";
+// app/page.tsx
+import Image from 'next/image';
+import styles from '../styles/Home.module.css'; 
+import LayoutWithSidebar from '../components/LayoutWithSidebar'; // 新しいレイアウトをインポート
+import RandomPostsCarousel from '../components/RandomPostsCarousel';
+import PostList from '../components/PostList';
+import Footer from '../components/Footer'; // フッターをインポート
+import { client } from '../libs/client';
+import type { Blog } from '../types/blog';
+
+export const revalidate = 60;
+
+function shuffleArray(array: Blog[]): Blog[] { 
+  const newArray = [...array];
+  for (let i = newArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+  }
+  return newArray;
+}
 
 export default async function Home() {
-  // client.getに、新しく作成した BlogListResponse 型を指定する
-  const data = await client.get<BlogListResponse>({
-    endpoint: "blogs",
-  });
+  const data = await client.get({ endpoint: 'blogs' });
+  const allPosts = data.contents;
+  const randomPosts = shuffleArray(allPosts).slice(0, 5);
 
   return (
-    <div>
-      <h1>ブログ一覧</h1>
-      <ul>
-        {data.contents.map((blog) => (
-          <li key={blog.id}>
-            <Link href={`/blog/${blog.id}`}>{blog.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <>
+      {/* バナー */}
+      <div className={styles.heroContainer}>
+        <Image
+          src="/images/title.png"
+          alt="ブログのヒーローイメージ"
+          width={1920} 
+          height={750} 
+          className={styles.heroImage}
+          priority
+        />
+      </div>
+      
+      {/* サイドバー付きレイアウト */}
+      <LayoutWithSidebar>
+        {/* ランダム記事カルーセル */}
+        <RandomPostsCarousel posts={randomPosts} />
+        {/* ブログ一覧 */}
+        <PostList posts={allPosts} />
+      </LayoutWithSidebar>
+
+      {/* フッター */}
+      <Footer />
+    </>
   );
 }

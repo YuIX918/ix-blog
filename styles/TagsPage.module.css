@@ -1,0 +1,130 @@
+/* styles/TagsPage.module.css */
+
+.mainTitle {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+  border-bottom: 2px solid var(--color-border); /* 変数適用 */
+  padding-bottom: 16px;
+  color: var(--color-text); /* 変数適用 */
+}
+
+/* 2列グリッドの親コンテナ */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* 縦に記事が並ぶカラム */
+.categoryColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 0;
+}
+
+/* 枠付きのカテゴリ見出し */
+.categoryTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+  border: 1px solid var(--color-border); /* 変数適用 */
+  border-radius: 0.5em; 
+  text-align: center;
+  padding: 12px;
+  color: var(--color-text); /* 変数適用 */
+}
+
+/* 縦に記事を並べるためのリスト */
+.postsList {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* 「もっとみる」ボタンコンテナ */
+.seeMoreContainer {
+  text-align: center;
+  margin-top: auto;
+  padding-top: 10px;
+}
+.seeMoreButton {
+  display: inline-block;
+  padding: 10px 24px;
+  background-color: var(--color-button-accent-bg); /* 変数適用 */
+  border: none;
+  border-radius: 9999px;
+  color: var(--color-button-accent-text); /* 変数適用 */
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transform: translateY(0);
+}
+.seeMoreButton:hover {
+  background-color: var(--color-button-accent-hover-bg); /* 変数適用 */
+  color: var(--color-button-accent-text); /* 変数適用 */
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* 記事カード (tagPostCard) */
+.tagPostCard {
+  background-color: var(--color-background); /* 変数適用 */
+  border: 1px solid var(--color-border); /* 変数適用 */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  color: var(--color-text); /* 変数適用 */
+}
+.tagPostCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+.tagImageWrapper {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  overflow: hidden; 
+  border-bottom: 1px solid var(--color-border); /* 変数適用 */
+}
+.tagEyecatch {
+  object-fit: cover;
+}
+.tagEyecatchDummy {
+  width: 100%;
+  height: 100%;
+  background-color: #eee; /* これは固定で良いかも */
+}
+.tagPostContent {
+  padding: 12px 16px;
+}
+.tagPostTitle {
+  font-size: 1rem; 
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 8px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  height: 3.2em; 
+  color: var(--color-text); /* 変数適用 */
+}
+.tagPostDate {
+  font-size: 0.9rem;
+  color: var(--color-text-subtle); /* 変数適用 */
+  display: block;
+}
+
+/* スマホでは1列に戻す */
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}

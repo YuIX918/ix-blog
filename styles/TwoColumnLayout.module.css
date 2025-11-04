@@ -1,0 +1,96 @@
+/* styles/TwoColumnLayout.module.css */
+
+/* コンテンツ全体のラッパー (バナーとフッターは含まず、中央揃え部分を囲む) */
+.contentInner {
+  max-width: 1200px; /* 全体の最大幅 (お好みで調整) */
+  margin: 0 auto;
+  padding: 40px 20px 40px; /* 上下の余白 + 左右の余白 */
+  box-sizing: border-box;
+}
+
+/* 2カラムグリッドのコンテナ */
+.gridContainer {
+  display: grid;
+  grid-template-columns: minmax(0, 2.5fr) minmax(0, 1fr);
+  gap: 40px; /* カラム間の隙間 */
+}
+
+/* 左カラム（メインコンテンツ） */
+.mainContent {
+  min-width: 0; /* はみ出し防止 */
+}
+
+/* 右カラム（サイドバー） */
+.sidebar {
+  min-width: 0; /* はみ出し防止 */
+  display: flex; /* サイドバー内の要素を縦に並べるため */
+  flex-direction: column;
+/* サイドバー全体を囲むスタイル */
+  background-color: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 20px; /* 内側の余白 */
+}
+
+/* サイドバー内の各セクションの共通スタイル */
+.sidebarSection {
+  margin-bottom: 30px; /* セクション間の下の余白 */
+}
+/* 最後の要素だけ下のマージンをなくす */
+.sidebarSection:last-child {
+  margin-bottom: 0;
+}
+
+.sidebarSection h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-top: 0;
+  margin-bottom: 15px;
+
+  background-color: var(--color-header-bg); /* オレンジ背景 */
+  color: var(--color-header-text); /* 黒文字 */
+  border-radius: 6px; /* 角丸 */
+  padding: 10px 15px; /* 内側の余白 */
+}
+.sidebarSection ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.sidebarSection li {
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+}
+.sidebarSection a {
+  color: var(--color-text);
+  text-decoration: none;
+}
+.sidebarSection a:hover {
+  color: var(--color-link);
+  text-decoration: underline;
+}
+
+/* 検索ボックスのスタイル */
+.sidebarSearchInput {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 5px;
+  font-size: 1rem;
+  background-color: var(--color-background);
+  color: var(--color-text);
+}
+
+/* スマホ表示 (768px 以下) では1カラムに戻す */
+@media (max-width: 768px) {
+  .contentInner {
+    padding-top: 70px; /* ヘッダー分少し減らす */
+  }
+  .gridContainer {
+    grid-template-columns: 1fr; /* 1列にする */
+    gap: 0; /* 隙間をなくす */
+  }
+  .sidebar {
+    margin-top: 40px; /* メインコンテンツとの間に隙間を作る */
+  }
+}

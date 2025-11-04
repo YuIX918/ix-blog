@@ -1,0 +1,51 @@
+/* styles/Footer.module.css */
+
+.footer {
+  background-color: var(--color-header-bg); /* ヘッダーと同じ背景色 */
+  color: var(--color-header-text); /* ヘッダーと同じ文字色 */
+  padding: 30px 20px; /* 上下のパディングを少し多めに */
+  margin-top: 60px; /* メインコンテンツとの間の余白 */
+  border-top: 1px solid var(--color-border);
+}
+
+/* フッター内のコンテンツを中央揃えにするためのコンテナ */
+.container {
+  max-width: 1200px; /* TwoColumnLayout と同じ最大幅 */
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; /* 左右に要素を配置 */
+  align-items: center;
+  flex-wrap: wrap; /* スマホで縦積みに */
+  gap: 20px; /* 左右要素間の最小隙間 */
+}
+
+.nav {
+  display: flex;
+  gap: 20px; /* リンク間の隙間 */
+}
+
+.nav a {
+  color: var(--color-header-text);
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+.nav a:hover {
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 0.9rem;
+  text-align: right;
+}
+
+/* スマホ表示 */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* 縦積み */
+    align-items: center; /* 中央揃え */
+  }
+  .copyright {
+    text-align: center;
+    margin-top: 10px; /* 上のナビゲーションとの隙間 */
+  }
+}

@@ -1,17 +1,43 @@
-// ブログ記事1件の型定義
-export type Blog = {
-  id: string;
-  title: string;
-  body: string;
-  publishedAt: string;
-  eyecatch?: any;
-  category?: any;
+// types/blog.ts
+
+// カテゴリの型定義
+export type Category = {
+    id: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    revisedAt: string;
+    name: string;
 };
 
-// ブログ記事一覧のレスポンス全体の型定義
+// アイキャッチの型定義
+export type Eyecatch = {
+    url: string;
+    height: number;
+    width: number;
+};
+
+// Blog の型定義
+export type Blog = {
+    id: string;
+
+    // --- ↓↓↓ ここから4行を追記・確認してください ↓↓↓ ---
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string; // ソートと日付表示に必須
+    revisedAt: string;
+    // --- ↑↑↑ ここまで ---
+
+    title: string;
+    body: string;
+    eyecatch?: Eyecatch;
+    category?: Category;
+};
+
+// ブログ一覧レスポンスの型
 export type BlogListResponse = {
-  contents: Blog[]; // ✅ 配列にする
-  totalCount: number;
-  offset: number;
-  limit: number;
+    contents: Blog[];
+    totalCount: number;
+    offset: number;
+    limit: number;
 };

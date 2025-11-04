@@ -1,0 +1,167 @@
+/* styles/PostList.module.css */
+
+.container {
+  width: 100%;
+}
+
+/* ヘッダー (縦並び) */
+.header {
+  margin-bottom: 16px;
+}
+.header h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--color-text); /* 変数適用 */
+}
+
+/* ソート (縦並び) */
+.sortContainer {
+  display: flex;
+  justify-content: flex-start; /* 左寄せ */
+  margin-bottom: 24px;
+}
+.sortMenuContainer {
+  position: relative;
+  z-index: 10;
+}
+.sortButton {
+  background: var(--color-background); /* 変数適用 */
+  border: 1px solid var(--color-border); /* 変数適用 */
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.9rem;
+  color: var(--color-text); /* 変数適用 */
+  transition: background-color 0.2s ease;
+}
+.sortButton:hover {
+  background: var(--color-border); /* 変数適用 */
+}
+.sortMenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  /* right: 0; */ /* 左寄せなら不要 */
+  left: 0; /* ★ 左寄せに変更 */
+  width: 160px;
+  background-color: var(--color-background); /* 変数適用 */
+  border: 1px solid var(--color-border); /* 変数適用 */
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 1010;
+  padding: 8px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.sortMenuItem {
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  font-size: 0.95rem;
+  color: var(--color-text); /* 変数適用 */
+  cursor: pointer;
+  border-radius: 6px;
+  width: 100%;
+  text-align: left;
+  transition: background-color 0.2s ease;
+}
+.sortMenuItem:hover {
+  background-color: var(--color-border); /* 変数適用 */
+}
+.checkIcon {
+  margin-left: auto;
+}
+
+/* 記事グリッド */
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+.postCard {
+  background-color: var(--color-header-bg); /* 背景をオレンジに */
+  border: 1px solid var(--color-border); /* 変数適用 */
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  text-decoration: none;
+  color: var(--color-text); /* 変数適用 */
+}
+.postCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-4px);
+}
+.eyecatch {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-bottom: 1px solid var(--color-border); /* 変数適用 */
+}
+.postContent {
+  padding: 16px;
+}
+.postTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 0;
+  margin-bottom: 8px;
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  height: 3.52em;
+  color: var(--color-text); /* 変数適用 */
+}
+.postDate {
+  font-size: 0.9rem;
+  color: var(--color-text-subtle); /* 変数適用 */
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ページネーション */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+.pagination button {
+  background: var(--color-background); /* 変数適用 */
+  border: 1px solid var(--color-border); /* 変数適用 */
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  color: var(--color-text); /* 変数適用 */
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+.pagination button:hover:not(:disabled) {
+  background-color: var(--color-border); /* 変数適用 */
+}
+.pagination button:disabled {
+  color: var(--color-text-subtle); /* 変数適用 */
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.pagination .activePage {
+  background-color: var(--color-text); /* 変数適用 */
+  color: var(--color-background); /* 変数適用 */
+  font-weight: bold;
+}

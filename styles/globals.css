@@ -1,0 +1,46 @@
+/* styles/globals.css */
+
+/* 1. CSS変数による色の定義 */
+:root {
+  /* ライトモードのデフォルト色 */
+  --color-background: #ffffff;  /* 背景色 */
+  --color-text: #111111;        /* 文字色 */
+  --color-border: #eaeaea;      /* 罫線 */
+  --color-header-bg: #ffffff;   /* ヘッダー背景 */
+  --color-nav-bg: #333333;      /* ナビゲーション背景 */
+  --color-nav-text: #ffffff;    /* ナビゲーション文字色 */
+}
+
+/* ダークモード時の色 */
+[data-theme='dark'] {
+  --color-background: #1a1a1a;  /* 背景色 (暗く) */
+  --color-text: #eeeeee;        /* 文字色 (明るく) */
+  --color-border: #333333;      /* 罫線 */
+  --color-header-bg: #222222;   /* ヘッダー背景 */
+  --color-nav-bg: #111111;      /* ナビゲーション背景 */
+  --color-nav-text: #eeeeee;    /* ナビゲーション文字色 */
+}
+
+
+/* 2. body と各コンポーネントにCSS変数を適用 */
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  
+  background-color: var(--color-background);
+  color: var(--color-text);
+  /* スムーズに色が変わるように transition を設定 */
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+* {
+  box-sizing: border-box;
+}

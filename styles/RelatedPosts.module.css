@@ -1,0 +1,12 @@
+/* styles/RelatedPosts.module.css */
+.container {
+  margin-top: 60px; /* タグバッジとのマージン */
+  padding-top: 40px; /* 見出しの上のパディング */
+  border-top: 2px solid var(--color-border); /* 境界線 */
+}
+.container h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 24px;
+  text-align: center; /* 見出しを中央揃え */
+}
