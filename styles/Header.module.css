@@ -17,21 +17,19 @@
 }
 
 .logo {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  line-height: 0; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 60px; /* ヘッダー高さに合わせて調整 */
 }
-.logo a {
-  display: inline-block;
-  /* ロゴの色はここで直接指定するか、SVG側で制御します */
-  /* color: var(--color-header-text); */ 
+.logoImage {
+  display: block;
+  margin: 0 auto; /* 中央寄せ */
+  object-fit: contain;
 }
-/* ダークモードでロゴSVGの色を変えたい場合 (例: SVGが黒の場合) */
-[data-theme='dark'] .logo img {
-   filter: invert(1) brightness(1.5); /* 反転して少し明るく */
+[data-theme='dark'] .logoImage {
+  filter: brightness(1.2);
 }
-
 
 .iconButton {
   background: none;

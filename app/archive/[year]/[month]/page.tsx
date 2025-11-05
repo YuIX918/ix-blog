@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation';
 import LayoutWithSidebar from '../../../../components/LayoutWithSidebar';
 import PostList from '../../../../components/PostList';
 import { jstMonthBoundariesAsUtcIso, JST_OFFSET_MS } from '../../../../libs/dateHelpers';
+import styles from '../../styles/TwoColumnLayout.module.css';
 
 type ParamsPromise = Promise<{ year: string; month: string }>;
 

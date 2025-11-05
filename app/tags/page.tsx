@@ -9,7 +9,7 @@ import tagPageStyles from '../../styles/TagsPage.module.css';
 import LayoutWithSidebar from '../../components/LayoutWithSidebar'; // 新しいレイアウトをインポート
 
 export const metadata: Metadata = {
-  title: 'タグ（カテゴリ）一覧',
+  title: 'タグ別検索',
 };
 export const revalidate = 60;
 type CategoryWithPosts = Category & {
@@ -36,7 +36,7 @@ export default async function TagsPage() {
   return (
     // サイドバー付きレイアウト
     <LayoutWithSidebar>
-      <h1 className={tagPageStyles.mainTitle}>タグ（カテゴリ）一覧</h1>
+      <h1 className={tagPageStyles.mainTitle}>タグ別検索</h1>
       <div className={tagPageStyles.gridContainer}>
         {categoriesWithPosts.map((category) => (
           <section key={category.id} className={tagPageStyles.categoryColumn}>

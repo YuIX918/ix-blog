@@ -1,19 +1,13 @@
 // app/layout.tsx
 import type { Metadata } from 'next';
 import { Inter, Roboto_Mono } from 'next/font/google';
-import './globals.css';
+import '../styles/globals.css';
+import ThemeProvider from '../components/ThemeProvider';
 import Header from '../components/Header';
 import BackToTopButton from '../components/BackToTopButton';
 
-const inter = Inter({
-  subsets: ['latin'],
-  variable: '--font-sans',
-});
-
-const robotoMono = Roboto_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
-});
+const inter = Inter({ subsets: ['latin'], variable: '--font-sans' });
+const robotoMono = Roboto_Mono({ subsets: ['latin'], variable: '--font-mono' });
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://ix-blog.netlify.app'),
@@ -25,12 +19,7 @@ export const metadata: Metadata = {
     url: 'https://ix-blog.netlify.app',
     siteName: 'Ⅸのだらだら録',
     images: [
-      {
-        url: '/images/ogp_default.png',
-        width: 1200,
-        height: 630,
-        alt: 'Ⅸのだらだら録 OGP画像',
-      },
+      { url: '/images/ogp_default.png', width: 1200, height: 630, alt: 'Ⅸのだらだら録 OGP画像' },
     ],
     locale: 'ja_JP',
     type: 'website',
@@ -51,9 +40,11 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
-        <Header />
-        <main>{children}</main>
-        <BackToTopButton />
+        <ThemeProvider>
+          <Header />
+          <main>{children}</main>
+          <BackToTopButton />
+        </ThemeProvider>
       </body>
     </html>
   );

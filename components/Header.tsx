@@ -137,11 +137,12 @@ export default function Header() {
         <div className={styles.logo}>
           <Link href="/">
             <Image
-              src="/images/logo.svg"
+              src="/images/logo.png"
               alt="MyBlog ロゴ"
-              width={120}
-              height={40}
+              width={300}
+              height={60}
               priority
+              className={styles.logoImage} // CSS制御用クラス
             />
           </Link>
         </div>
